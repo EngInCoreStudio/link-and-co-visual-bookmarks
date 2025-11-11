@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Link & Co – Options</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 20px; color: #222; }
+    h1 { font-size: 1.25rem; margin-top: 0; }
+    form { display: flex; flex-direction: column; gap: 12px; max-width: 420px; }
+    label { font-weight: 600; }
+    input[type=text] { padding: 8px 10px; font-size: 14px; border: 1px solid #bbb; border-radius: 4px; }
+    button { padding: 8px 14px; font-size: 14px; background: #2563eb; color: #fff; border: none; border-radius: 4px; cursor: pointer; }
+    button:disabled { opacity: .6; cursor: not-allowed; }
+    #status { font-size: 13px; line-height: 1.4; background: #f6f7f9; padding: 10px; border-radius: 4px; border: 1px solid #e2e5e9; }
+    .meta { font-size: 12px; color: #666; }
+  </style>
+</head>
+<body>
+  <h1>License & Trial</h1>
+  <p class="meta">Enter your lifetime license key below. If you don't have one, you can continue using the trial until it expires.</p>
+  <form id="license-form" autocomplete="off">
+    <label for="key">License Key</label>
+    <input id="key" type="text" placeholder="Paste your license key" />
+    <div style="display:flex; gap:8px; align-items:center;">
+      <button id="save" type="button">Save</button>
+      <span id="saving" style="display:none; font-size:12px; color:#555;">Saving…</span>
+    </div>
+    <p id="status">Loading status…</p>
+  </form>
+  <hr style="margin:30px 0;" />
+  <section>
+    <h2 style="font-size:1rem; margin-top:0;">Upgrade</h2>
+    <p class="meta">You can purchase the lifetime version at any time.</p>
+    <button id="optUpgrade" type="button">Upgrade</button>
+  </section>
+  <hr style="margin:30px 0;" />
+  <section class="help-legal-section">
+    <h2 style="font-size:1rem; margin-top:0;">Help & Legal</h2>
+    <div style="display:flex; flex-direction:column; gap:8px; font-size:13px;">
+      <a href="#" id="optPrivacy" target="_blank" rel="noopener">Privacy Policy</a>
+      <a href="#" id="optTerms" target="_blank" rel="noopener">Terms of Service</a>
+      <a href="mailto:info@engincore.it" id="optSupport">Contact Support</a>
+    </div>
+  </section>
+  <script defer src="src/extpay.js"></script>
+  <script defer src="src/app_config.js"></script>
+  <script defer src="src/extpayClient.js"></script>
+  <script defer src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Link & Co — Visual Bookmarks",
+  "short_name": "Link & Co",
+  "version": "1.0.1",
+  "description": "A visual, container-based bookmarks manager that feels like a desktop for your links. MV3, trial, and one-time lifetime license.",
+  "action": {
+    "default_title": "Open Link & Co",
+    "default_icon": {
+      "16": "icons/DWL_EIC_favicon_16x16.png",
+      "32": "icons/DWL_EIC_favicon_32x32.png"
+    }
+  },
+  "background": {
+    "service_worker": "sw.js",
+    "type": "module"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "permissions": [
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://lic.example.com/*"
+  ],
+  "icons": {
+    "16": "icons/DWL_EIC_favicon_16x16.png",
+    "48": "icons/DWL_EIC_favicon_48x48.png",
+    "128": "icons/DWL_EIC_favicon_128x128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://extensionpay.com/*"],
+      "js": ["src/extpay_onpaid_cs.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+# Node modules
+node_modules/
+
+# Build artifacts
+dist/
+tmp_zip_extract/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files (if you add any)
+.env
+.env.local
+
+# Temporary files
+*.tmp
+*.bak
+
+# Package lock (optional - some prefer to commit this)
+# package-lock.json

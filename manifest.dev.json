@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Link & Co — Visual Bookmarks (Dev)",
+  "version": "1.0.0",
+  "description": "DEV build - uses local license endpoint.",
+  "action": { "default_title": "Open Link & Co", "default_popup": "index.html" },
+  "background": { "service_worker": "sw.js", "type": "module" },
+  "options_ui": { "page": "options.html", "open_in_tab": true },
+  "permissions": ["storage", "alarms"],
+  "host_permissions": ["http://localhost:3000/*", "https://lic.example.com/*"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

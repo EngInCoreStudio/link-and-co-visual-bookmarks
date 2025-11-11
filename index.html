@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Viewport per layout responsivo -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- CSP = Content Security Policy -->
+
+  <title>DesktopWebLink</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/DWL_EIC_favicon_32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/DWL_EIC_favicon_16x16.png" />
+
+  <!-- CSS minificato -->
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Prevent flash of enabled premium controls before gating logic runs */
+    body.preload [data-pro] { visibility: hidden; }
+  </style>
+</head>
+<body class="preload">
+  <!-- Top bar con menu hamburger e tab -->
+  <div id="tab-bar">
+    <div class="dropdown">
+      <button id="menu-btn" title="Menu">&#9776;</button>
+
+      <div id="dropdown-menu" class="dropdown-content">
+        <a href="#" id="export-file-btn">Export data</a>
+        <a href="#" id="import-btn">Import data</a>
+        <input type="file" id="import-file-input" accept=".json" style="display:none;">
+
+        <div class="dropdown-submenu">
+          <span>Container background:</span>
+          <select id="container-bg-select">
+            <option value="#000000">Black</option>
+            <option value="#333333">Dark gray</option>
+            <option value="#00008B">Dark blue</option>
+            <option value="#8B0000">Dark red</option>
+          </select>
+        </div>
+
+        <div class="dropdown-submenu">
+          <span>Page background:</span>
+          <select id="general-bg-select">
+            <option value="#000000">Black</option>
+            <option value="#333333">Dark gray</option>
+            <option value="#00008B">Dark blue</option>
+            <option value="#8B0000">Dark red</option>
+          </select>
+        </div>
+        <hr style="border:none; border-top:1px solid #444; margin:8px 0;" />
+        <a href="#" id="menuUpgrade">Upgrade</a>
+        <hr style="border:none; border-top:1px solid #444; margin:8px 0;" />
+        <div class="help-legal-menu">
+          <a href="#" id="menuPrivacy" target="_blank" rel="noopener">Privacy Policy</a>
+          <a href="#" id="menuTerms" target="_blank" rel="noopener">Terms of Service</a>
+          <a href="mailto:info@engincore.it" id="menuSupport">Contact Support</a>
+        </div>
+      </div>
+    </div>
+
+    <button id="add-tab-btn" title="Add new tab">+</button>
+    <div id="tabs-container"></div>
+    <span id="proIndicator" class="pro-indicator"></span>
+    <a id="refreshStatus" class="refresh-status" href="javascript:void(0)" title="Refresh purchase status">Refresh status</a>
+    <button id="btnUpgrade" class="btn-upgrade" type="button" title="Go PRO" style="margin-left:auto;">Upgrade</button>
+  </div>
+  
+  <!-- Trial / Upgrade banner (text set dynamically). Hidden when PRO -->
+  <div id="trialBanner" style="min-height:20px; font-size:11px; padding:4px 8px; color:#ffd27f; text-align:center;"></div>
+  
+  <!-- Upgrade / Enter Key actions (shown only when NOT PRO) -->
+  <div id="upgradeActions" style="display:flex; gap:8px; justify-content:center; margin:4px 0 8px;">
+    <button id="upgradeBtn" type="button">Upgrade</button>
+    <button id="enterKeyBtn" type="button">Enter License Key</button>
+  </div>
+
+  <!-- Toolbar -->
+  <div id="toolbar">
+    <button id="create-container-btn" class="fancy-button" title="Add new container" data-pro>+</button>
+    <button id="paste-container-btn" class="paste-container-btn" title="Paste copied container" data-pro>📋</button>
+    <div id="drop-area">Drag a link here (or inside a container)</div>
+  </div>
+
+  <!-- Area principale -->
+  <div id="links-container"></div>
+
+  <!-- Legacy global scripts required by main.js (define LSUtils, ContainerModule, IconModule) -->
+  <script src="localStorageUtils.js"></script>
+  <script src="containers.js"></script>
+  <script src="icons.js"></script>
+  <script src="advancedBackup.js"></script>
+  <!-- ExtPay global (non-ESM) -->
+  <script defer src="src/extpay.js"></script>
+  <script defer src="src/app_config.js"></script>
+  <script defer src="src/extpayClient.js"></script>
+  <script defer src="src/init.js"></script>
+  <script type="module" src="main.js"></script>
+  <script defer src="src/boot_marker.js"></script>
+
+  <!-- Brand in basso a destra -->
+  <div id="engin-brand"
+       style="position: fixed; right: 14px; bottom: 10px; display: flex; align-items: center; gap: 8px; z-index: 1000;">
+    <img
+      id="engin-logo"
+      src="EngInC_logo_ver02.jpg"
+      alt="EngInC logo"
+      title="EngInC"
+      draggable="false"
+      style="width: 44px; height: 44px; object-fit: contain; opacity: 0.9;"
+    />
+    <a
+      id="engin-link"
+      href="https://engincore.it"
+      target="_blank"
+      rel="noopener noreferrer"
+      title="Visit engincore.it"
+      style="font-size: 12px; color: #bbb; text-decoration: underline;"
+    >EngInCore.it</a>
+  </div>
+</body>
+</html>

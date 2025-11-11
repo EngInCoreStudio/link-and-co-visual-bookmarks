@@ -1,0 +1,387 @@
+:root {
+  --container-bg: rgba(255, 255, 255, 0.1);
+  --page-bg: #000000;
+}
+
+/* Sfondo della pagina */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--page-bg);
+  color: #fff;
+  font-family: sans-serif;
+}
+
+/* Barra dei Tab (fissata in alto) */
+#tab-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #222;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  box-sizing: border-box;
+  height: 50px;
+}
+
+/* Dropdown per il menu nella barra dei tab */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+#menu-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background-color: #333;
+  min-width: 200px;
+  z-index: 1001;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.dropdown-content a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  margin: 5px 0;
+}
+.dropdown-content a:hover {
+  color: #0bf;
+}
+.help-legal-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.help-legal-menu a {
+  font-size: 12px;
+  color: #aaa;
+}
+.help-legal-menu a:hover {
+  color: #0bf;
+}
+.dropdown-submenu {
+  margin-top: 10px;
+}
+.dropdown-submenu span {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #ccc;
+}
+.dropdown-submenu select {
+  width: 100%;
+  padding: 5px;
+  font-size: 14px;
+}
+
+/* Pulsante per aggiungere un tab (a sinistra) */
+#add-tab-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  margin-right: 10px;
+  transition: background-color 0.2s;
+}
+#add-tab-btn:hover {
+  background-color: #555;
+}
+
+/* Contenitore dei tab */
+#tabs-container {
+  display: flex;
+  gap: 5px;
+  flex-grow: 1;
+}
+
+/* PRO indicator */
+.pro-indicator {
+  margin-left: 8px;
+  font-weight: 700;
+  font-size: 12px;
+}
+body.pro .pro-indicator {
+  color: #6cf;
+}
+
+/* Refresh status link */
+.refresh-status {
+  margin-left: 10px;
+  font-size: 11px;
+  opacity: .8;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #aaa;
+}
+.refresh-status:hover {
+  opacity: 1;
+  color: #fff;
+}
+
+/* Upgrade button (always visible) */
+.btn-upgrade {
+  background: linear-gradient(135deg, #ffb347, #ff8700);
+  border: 1px solid #ff9800;
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+}
+.btn-upgrade:hover {
+  background: linear-gradient(135deg, #ffc76a, #ff9800);
+}
+.btn-upgrade:active {
+  transform: scale(.95);
+}
+
+/* Stile dei singoli tab */
+.tab-item {
+  background-color: #444;
+  padding: 5px 10px;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.tab-item.active {
+  background-color: #4CAF50;
+}
+.tab-name {
+  cursor: pointer;
+  outline: none;
+}
+.tab-name[contenteditable]:focus {
+  outline: 2px dashed #fff;
+}
+.tab-remove-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  width: 18px;
+  height: 18px;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+/* Toolbar: posizionata sotto la tab-bar */
+#toolbar {
+  position: relative;
+  margin-top: 60px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+/* Pulsante per creare contenitori */
+#create-container-btn {
+  background: linear-gradient(135deg, #4CAF50, #81C784);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#create-container-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #66BB6A, #A5D6A7);
+}
+#create-container-btn:active {
+  transform: scale(0.95);
+}
+
+/* Pulsante per incollare contenitore */
+.paste-container-btn {
+  background: linear-gradient(135deg, #81C784, #4CAF50);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.paste-container-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Area di drop */
+#drop-area {
+  flex-grow: 1;
+  height: 40px;
+  border: 2px dashed #fff;
+  border-radius: 20px;
+  text-align: center;
+  padding: 0 10px;
+  font-size: 16px;
+  color: white;
+  box-sizing: border-box;
+}
+
+/* Contenitore principale */
+#links-container {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 50px - 70px);
+  box-sizing: border-box;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+/* ------ ICONE (Link) ------ */
+.icon-container {
+  width: 60px;
+  height: 50px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  cursor: move;
+  user-select: none;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+.icon-container img {
+  width: 40px;
+  height: 40px;
+}
+.icon-circle {
+  background-color: #000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-circle img {
+  width: 70%;
+  height: 70%;
+}
+.icon-container div {
+  margin-top: 5px;
+  font-size: 12px;
+  word-wrap: break-word;
+  color: white;
+  cursor: pointer;
+}
+.icon-container button {
+  padding: 0;
+  font-size: 14px;
+  cursor: pointer;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  line-height: 18px;
+  text-align: center;
+}
+.icon-container .edit-btn {
+  left: -5px;
+  right: auto;
+  background-color: #4CAF50;
+}
+
+/* ------ CONTENITORI ------ */
+.resizable-container {
+  position: absolute;
+  background-color: var(--container-bg);
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.container-drag-handle {
+  height: 25px;
+  background-color: rgba(0,0,0,0.3);
+  line-height: 25px;
+  padding-left: 10px;
+  color: #fff;
+  user-select: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.container-name {
+  font-weight: bold;
+  outline: none;
+  flex-grow: 1;
+}
+.resize-handle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 50%;
+  bottom: 2px;
+  right: 2px;
+  cursor: se-resize;
+}
+.container-remove-btn {
+  background-color: #ffA500; /* #ff4d4d rosso */
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.container-copy-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 5px;
+}

@@ -1,0 +1,18 @@
+{
+  "name": "link-and-co-visual-bookmarks",
+  "version": "1.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "icons": "node scripts/gen-icons.js",
+  "build:zip": "node scripts/zip.js",
+  "build:checksum": "node scripts/checksum.js",
+  "preflight": "node scripts/preflight.js",
+  "release:check": "npm run build:zip && npm run preflight && npm run build:checksum",
+  "use:dev": "copy manifest.dev.json manifest.json"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "archiver": "^6.0.1"
+  }
+}
