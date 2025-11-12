@@ -8,7 +8,8 @@
     "default_title": "Open Link & Co",
     "default_icon": {
       "16": "icons/DWL_EIC_favicon_16x16.png",
-      "32": "icons/DWL_EIC_favicon_32x32.png"
+      "32": "icons/DWL_EIC_favicon_32x32.png",
+      "48": "icons/DWL_EIC_favicon_48x48.png"
     }
   },
   "background": {
@@ -24,7 +25,7 @@
     "alarms"
   ],
   "host_permissions": [
-    "https://lic.example.com/*"
+    "https://extensionpay.com/*"
   ],
   "icons": {
     "16": "icons/DWL_EIC_favicon_16x16.png",

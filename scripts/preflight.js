@@ -80,7 +80,11 @@ if(fs.existsSync(zipPath)){
     if(!cfg) err('Packaged src/config.js missing');
     else {
       const txt = cfg.getData().toString('utf8');
-      if(!txt.includes('https://lic.example.com/api/license/verify')) err('Packaged config.js missing production endpoint');
+      // Check USE_LEGACY_LICENSE flag
+      const useLegacy = /USE_LEGACY_LICENSE\s*=\s*true/.test(txt);
+      if(useLegacy){
+        if(!txt.includes('https://lic.example.com/api/license/verify')) err('Packaged config.js missing production endpoint (legacy license enabled)');
+      }
       if(/localhost/i.test(txt)) err('Packaged config.js contains localhost');
       if(/DEV_FORCE_PRO\s*=\s*true/.test(txt)) err('Packaged config.js contains DEV_FORCE_PRO = true');
       if(/DEV_MAGIC_KEY\s*=\s*'DEV-LOCAL-OK'/.test(txt)) err('Packaged config.js contains DEV_MAGIC_KEY dev value');
@@ -265,12 +269,12 @@ if(fs.existsSync(zipPath)){
           }
         }
         
-        // WARN for publisher/city placeholders (not error)
+        // ERROR for publisher/city placeholders
         if(content.includes('[TUO NOME O SOCIETÀ]')){
-          warn(`${filename} contains placeholder "[TUO NOME O SOCIETÀ]". Should be replaced before store submission.`);
+          err(`${filename} contains placeholder "[TUO NOME O SOCIETÀ]". Must be replaced before packaging.`);
         }
         if(content.includes('[CITTÀ]')){
-          warn(`${filename} contains placeholder "[CITTÀ]". Should be replaced before store submission.`);
+          err(`${filename} contains placeholder "[CITTÀ]". Must be replaced before packaging.`);
         }
       }
     }

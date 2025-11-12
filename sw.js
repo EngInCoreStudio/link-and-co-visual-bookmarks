@@ -21,6 +21,9 @@ if (USE_EXTPAY && globalThis.ExtPay) {
  * @param {boolean} isPro
  */
 async function updateBadge(isPro) {
+  // Badge disabled - no PRO/TRIAL badge on toolbar icon
+  return;
+  /* Disabled badge code:
   try {
     await chrome.action.setBadgeText({ text: isPro ? 'PRO' : '' });
     await chrome.action.setBadgeBackgroundColor({ color: isPro ? '#0b7' : '#00000000' });
@@ -28,6 +31,7 @@ async function updateBadge(isPro) {
     // Badge may fail if action not available yet; swallow silently.
     console.warn('[sw] badge update failed', e);
   }
+  */
 }
 
 /** Run a license check and update badge; safe wrapper. */
@@ -56,9 +60,9 @@ chrome.action.onClicked.addListener(() => {
 // Installation / update: schedule periodic license checks.
 chrome.runtime.onInstalled.addListener(async () => {
   try {
-    // Clear existing alarm (defensive) then create new one every 6 hours (360 minutes)
+    // Clear existing alarm (defensive) then create new one every 7 days (10080 minutes)
     await chrome.alarms.clear('licenseCheck');
-    chrome.alarms.create('licenseCheck', { periodInMinutes: 360 });
+    chrome.alarms.create('licenseCheck', { periodInMinutes: 10080 });
   } catch (e) {
     console.warn('[sw] failed to create alarm', e);
   }

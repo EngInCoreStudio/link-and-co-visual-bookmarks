@@ -31,20 +31,20 @@ Organizza i tuoi link in contenitori visivi drag-and-drop. Multi-tab workspace, 
 ### Come funziona la licenza
 1. **6 mesi di prova gratuita** al primo utilizzo (tutte le funzioni PRO attive)
 2. Dopo la scadenza, le funzioni PRO sono disabilitate (continui a vedere i tuoi link)
-3. **Upgrade una tantum** tramite ExtensionPay (pagamento sicuro off-platform, nessun abbonamento)
+3. **Upgrade una tantum** tramite ExtensionPay (pagamento sicuro, nessun abbonamento)
 4. Licenza lifetime valida per sempre
 
 ### Permessi richiesti
 - **storage**: Salva i tuoi link e contenitori localmente nel browser
-- **alarms**: Verifica periodica della licenza (ogni 6 ore, nessun tracking)
-- **host_permissions (lic.example.com)**: Validazione licenza lifetime (solo se acquisti l'upgrade)
+- **alarms**: Verifica periodica licenza (ogni 7 giorni)
+- **host_permissions (extensionpay.com)**: Pagamenti sicuri e verifica stato PRO
 
 ### Privacy
 - ✅ **Nessun tracking o analytics**
 - ✅ **Nessuna pubblicità**
 - ✅ **Dati salvati solo localmente** nel tuo browser (chrome.storage)
-- ✅ **Unica chiamata esterna**: validazione licenza (opzionale, solo dopo acquisto)
-- ✅ **Pagamenti gestiti da ExtensionPay/Stripe** (off-platform, sicuro PCI-DSS)
+- ✅ **Unica chiamata esterna**: ExtensionPay (checkout + verifica stato PRO)
+- ✅ **Pagamenti gestiti da ExtensionPay/Stripe** (sicuro PCI-DSS)
 
 Leggi la privacy policy completa: **https://engincore.it/legal/privacy.html**
 
@@ -53,7 +53,7 @@ Per assistenza, contatta: **info@engincore.it**
 
 ### Prezzi e Upgrade
 - **Trial**: Gratuito per 6 mesi (tutte le funzionalità PRO)
-- **Lifetime License**: Pagamento una tantum tramite ExtensionPay (off-platform)
+- **Lifetime License**: Pagamento una tantum tramite ExtensionPay
 - Nessun abbonamento ricorrente
 - Rimborsi gestiti secondo le policy di ExtensionPay/Stripe
 
@@ -77,7 +77,7 @@ bookmarks, visual bookmarks, containers, drag and drop, workspace, productivity,
 Italian (Italiano)
 
 ## Publisher Name
-**[TUO NOME O SOCIETÀ]** *(da compilare)*
+**EngInCore**
 
 ## Support Email
 **info@engincore.it**

@@ -1,7 +1,11 @@
 // main.js
 import { isPro, getTrialInfo } from './license.js';
+import { USE_LEGACY_LICENSE } from './src/config.js';
 const USE_EXTPAY = (window.__APP_CONFIG__ && window.__APP_CONFIG__.USE_EXTPAY);
 console.log('[BOOT] main.js loaded (module mode)');
+if (!USE_LEGACY_LICENSE) {
+  console.log('[LIC] Legacy license backend disabled (ExtPay-only)');
+}
 
 // PRO gating helpers (merge license/trial + ExtPay)
 async function isProLocal() {
@@ -115,7 +119,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     const refreshEl = document.getElementById('refreshStatus');
     if (refreshEl && !refreshEl.__bound) {
       refreshEl.__bound = true;
-      refreshEl.addEventListener('click', () => applyLicenseState(true));
+      refreshEl.addEventListener('click', async () => {
+        console.log('[REFRESH] License re-check requested by user');
+        try {
+          await chrome.runtime.sendMessage({ type: 'CHECK_LICENSE_NOW' });
+        } catch (e) {
+          console.warn('[REFRESH] Failed to send CHECK_LICENSE_NOW', e);
+        }
+        await applyLicenseState(true);
+      });
       console.log('[BOOT] Refresh status handler bound');
     }
     

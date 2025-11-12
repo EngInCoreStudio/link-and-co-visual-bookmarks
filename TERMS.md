@@ -104,12 +104,12 @@ Il Servizio **non raccoglie dati personali identificabili** (vedi **Privacy Poli
 ### 7.2 Archiviazione locale
 I tuoi dati sono salvati **localmente** nel browser (chrome.storage). Il fornitore **non ha accesso** ai tuoi dati.
 
-### 7.3 Validazione licenza
-Se acquisti Lifetime License, il Servizio invia:
-- Chiave licenza (stringa alfanumerica)
-- ID estensione (generato dal browser)
+### 7.3 Validazione PRO status
+Se acquisti Lifetime License tramite ExtensionPay, il Servizio comunica con:
+- `https://extensionpay.com/*` per checkout sicuro (Stripe PCI-DSS)
+- Verifica periodica stato PRO (ogni 7 giorni)
 
-a `https://lic.example.com/api/license/verify` per validazione. Nessun dato personale trasmesso.
+Nessun dato personale trasmesso dall'estensione; pagamenti gestiti da ExtensionPay/Stripe.
 
 ---
 
@@ -144,7 +144,7 @@ Il fornitore si riserva il diritto di modificare questi Termini in qualsiasi mom
 Questi Termini sono regolati dalla legge **italiana** (oppure specificare altra giurisdizione).
 
 ### 10.2 Foro competente
-Foro esclusivo: **Tribunale di [CITTÀ]** *(da compilare)*.
+Foro esclusivo: **Tribunale di Savona**.
 
 ### 10.3 Risoluzione controversie
 Prima di avviare azioni legali, l'utente accetta di tentare risoluzione amichevole contattando: **info@engincore.it**

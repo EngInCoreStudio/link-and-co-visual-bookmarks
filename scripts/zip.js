@@ -59,9 +59,18 @@ out.on('close', () => {
       process.exit(1);
     }
     const configText = configEntry.getData().toString('utf8');
-    if (!configText.includes('https://lic.example.com/api/license/verify') || configText.includes('localhost')) {
-      console.error('ERROR: Packaged config.js does not contain correct production LICENSE_ENDPOINT');
-      process.exit(1);
+    // Check USE_LEGACY_LICENSE flag
+    const useLegacy = /USE_LEGACY_LICENSE\s*=\s*true/.test(configText);
+    if (useLegacy) {
+      if (!configText.includes('https://lic.example.com/api/license/verify') || configText.includes('localhost')) {
+        console.error('ERROR: Packaged config.js does not contain correct production LICENSE_ENDPOINT (legacy license enabled)');
+        process.exit(1);
+      }
+    } else {
+      if (configText.includes('localhost')) {
+        console.error('ERROR: Packaged config.js contains localhost reference');
+        process.exit(1);
+      }
     }
     // Strict structure verification (Step 10f)
     const entries = zip.getEntries().map(e => e.entryName).sort((a,b)=>a.localeCompare(b));
@@ -87,7 +96,11 @@ out.on('close', () => {
       if (presentForbidden.length) console.error('ERROR: Forbidden root entries present:', presentForbidden.join(', '));
       process.exit(1);
     }
-    console.log('VERIFY: Packaged src/config.js contains production LICENSE_ENDPOINT and no localhost reference.');
+    if (useLegacy) {
+      console.log('VERIFY: Packaged src/config.js contains production LICENSE_ENDPOINT and no localhost reference.');
+    } else {
+      console.log('VERIFY: Packaged src/config.js in ExtPay-only mode (legacy backend disabled).');
+    }
     console.log('VERIFY: All REQUIRED entries present and no FORBIDDEN root entries found. PASS');
   }).catch(err => {
     console.error('ERROR reading zip for verification', err);

@@ -16,18 +16,19 @@ Tutte le funzionalità sono completamente compatibili:
 
 ## Caratteristiche
 - **6 mesi di prova gratuita** con tutte le funzionalità PRO
-- **Lifetime license** disponibile tramite pagamento una tantum (off-platform)
+- **Lifetime license** disponibile tramite pagamento una tantum (ExtensionPay)
 - **Nessun abbonamento ricorrente**
 - **Privacy-first**: dati salvati solo localmente, nessun tracking
+- **No backend license server**: solo ExtensionPay per pagamenti
 
 ## Permessi
 - `storage`: Salvataggio locale link e contenitori
-- `alarms`: Validazione periodica licenza
-- `host_permissions`: Validazione licenza lifetime (solo se acquisti upgrade)
+- `alarms`: Verifica periodica stato PRO (ogni 7 giorni)
+- `host_permissions (extensionpay.com)`: Pagamenti sicuri e verifica stato PRO
 
 ## Privacy e Sicurezza
-- Nessun dato inviato a server terzi (eccetto validazione licenza opzionale)
-- Pagamenti gestiti da ExtensionPay/Stripe (off-platform, PCI-DSS compliant)
+- Nessun dato inviato a server terzi (eccetto ExtensionPay per checkout)
+- Pagamenti gestiti da ExtensionPay/Stripe (PCI-DSS Level 1 compliant)
 - Privacy policy completa: **https://engincore.it/legal/privacy.html**
 
 ## Supporto

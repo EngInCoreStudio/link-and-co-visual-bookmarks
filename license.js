@@ -33,7 +33,7 @@ const SYNC_KEYS = [
   'licenseValidUntilUTC'
 ];
 
-import { LICENSE_ENDPOINT, DEV_FORCE_PRO, DEV_MAGIC_KEY, DEV_FAR_FUTURE_MS } from './src/config.js';
+import { LICENSE_ENDPOINT, USE_LEGACY_LICENSE, DEV_FORCE_PRO, DEV_MAGIC_KEY, DEV_FAR_FUTURE_MS } from './src/config.js';
 const FIVE_MIN_MS = 5 * 60 * 1000;
 
 /**
@@ -128,6 +128,11 @@ export async function validateAndCacheLicense() {
   const data = await ensureTrialInitialized();
   const now = Date.now();
   const licenseKey = data.licenseKey || '';
+
+  // If legacy license backend disabled, skip validation
+  if (!USE_LEGACY_LICENSE || !LICENSE_ENDPOINT) {
+    return true; // Trial-only mode, no backend validation
+  }
 
   // Dev override: force PRO regardless of entered key.
   if (DEV_FORCE_PRO === true) {

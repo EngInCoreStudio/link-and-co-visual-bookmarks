@@ -1,10 +1,18 @@
 // options.js (MV3 options page logic)
 // Responsible for storing the license key and displaying current license/trial status.
 
+import { USE_LEGACY_LICENSE } from './src/config.js';
+
 const KEY_INPUT = document.getElementById('key');
 const SAVE_BTN = document.getElementById('save');
 const STATUS_P = document.getElementById('status');
 const SAVING_SPAN = document.getElementById('saving');
+const LICENSE_FORM = document.getElementById('license-form');
+
+// Hide legacy license UI if disabled
+if (!USE_LEGACY_LICENSE && LICENSE_FORM) {
+  LICENSE_FORM.style.display = 'none';
+}
 
 // Helper to format a UTC timestamp (ms) into a readable date
 function fmt(ts) {
@@ -75,6 +83,7 @@ async function saveLicense() {
       licenseCheckedAtUTC: 0 // force re-check
     });
     STATUS_P.textContent = 'Saved. Triggering license check…';
+    console.log('[OPTIONS] License re-check requested');
     await chrome.runtime.sendMessage({ type: 'CHECK_LICENSE_NOW' });
     // Reload status after slight delay to allow SW to process
     setTimeout(loadStatus, 800);
