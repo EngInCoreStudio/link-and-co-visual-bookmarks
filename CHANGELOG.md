@@ -7,7 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [1.0.1] - 2025-11-08
+## [1.0.1] - 2025-11-18
+
+### Published
+- **First version published on Chrome Web Store** 🎉
+
+### Changed
+- **Monetization**: Switched to ExtPay-only model (legacy license backend disabled)
+- **License checks**: Reduced frequency from 6 hours to 7 days (weekly alarm)
+- **Badge overlay**: Disabled PRO/TRIAL badge on toolbar icon for cleaner UI
+- **Host permissions**: Removed lic.example.com, kept extensionpay.com only
+- **Documentation**: Updated all store listing docs to reflect ExtPay-only model
+
+### Added
+- Enhanced instant refresh with CHECK_LICENSE_NOW message handling
+- Modified build scripts to skip LICENSE_ENDPOINT validation when legacy disabled
+
+---
+
+## [1.0.1] - 2025-11-08 (Initial Development)
 
 ### Added
 - **ExtPay integration** for secure off-platform payments (Stripe backend via ExtensionPay)
