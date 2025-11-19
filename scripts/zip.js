@@ -30,7 +30,8 @@ const allowedRoots = new Set([
   'containers.js',
   'icons.js',
   'advancedBackup.js',
-  'EngInC_logo_ver02.jpg'
+  'EngInC_logo_ver02.jpg',
+  'help.html'
 ]);
 
 archive.on('entry', e => {
@@ -79,10 +80,10 @@ out.on('close', () => {
 
     const REQUIRED = [
       'icons/DWL_EIC_favicon_16x16.png','icons/DWL_EIC_favicon_48x48.png','icons/DWL_EIC_favicon_512x512.png',
-      'src/init.js','src/migration.js','src/storage.js','src/backup.js','src/config.js',
+      'src/init.js','src/migration.js','src/storage.js','src/backup.js','src/config.js','src/starterData.js',
       'manifest.json','index.html','styles.css','main.js','license.js','options.html','options.js','sw.js',
       'localStorageUtils.js','containers.js','icons.js','advancedBackup.js',
-      'EngInC_logo_ver02.jpg'
+      'EngInC_logo_ver02.jpg','help.html'
     ];
     const FORBIDDEN = [
       'icon16.png','icon48.png','icon128.png',
@@ -116,7 +117,7 @@ archive.file('manifest.json', { name: 'manifest.json' });
   'index.html','styles.css','main.js','license.js',
   'options.html','options.js','sw.js',
   'localStorageUtils.js','containers.js','icons.js','advancedBackup.js',
-  'EngInC_logo_ver02.jpg'
+  'EngInC_logo_ver02.jpg','help.html'
 ].forEach(f => { if (fs.existsSync(f)) archive.file(f, { name: f }); else console.warn('Missing root file', f); });
 
 // Preserve directories

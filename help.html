@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Link & Co - How to Use</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #e0e0e0;
+      line-height: 1.6;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+    
+    h1 {
+      color: #4fc3f7;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: #81c784;
+      font-size: 1.1em;
+      margin-bottom: 40px;
+    }
+    
+    h2 {
+      color: #4fc3f7;
+      font-size: 1.8em;
+      margin-top: 40px;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #4fc3f7;
+    }
+    
+    h3 {
+      color: #81c784;
+      font-size: 1.3em;
+      margin-top: 25px;
+      margin-bottom: 10px;
+    }
+    
+    p {
+      margin-bottom: 15px;
+      color: #d0d0d0;
+    }
+    
+    ul, ol {
+      margin-left: 30px;
+      margin-bottom: 20px;
+    }
+    
+    li {
+      margin-bottom: 10px;
+      color: #d0d0d0;
+    }
+    
+    code {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      color: #ffb74d;
+    }
+    
+    .tip {
+      background: rgba(129, 199, 132, 0.1);
+      border-left: 4px solid #81c784;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    
+    .warning {
+      background: rgba(255, 183, 77, 0.1);
+      border-left: 4px solid #ffb74d;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    
+    .feature {
+      background: rgba(79, 195, 247, 0.1);
+      border-left: 4px solid #4fc3f7;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    
+    strong {
+      color: #4fc3f7;
+    }
+    
+    .emoji {
+      font-size: 1.2em;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📚 Link & Co — Visual Bookmarks</h1>
+    <p class="subtitle">Your Complete Guide to Visual Workspace Management</p>
+    
+    <h2><span class="emoji">🚀</span>Quick Start</h2>
+    <p>Welcome to Link & Co! This extension helps you organize your bookmarks visually using containers and tabs. Here's how to get started:</p>
+    <ol>
+      <li><strong>Create a Container:</strong> Click the <code>+</code> button in the toolbar</li>
+      <li><strong>Add Links:</strong> Drag and drop any link into a container, or paste a URL</li>
+      <li><strong>Organize:</strong> Resize and move containers to arrange your workspace</li>
+      <li><strong>Create Tabs:</strong> Use the <code>+</code> button next to tabs to create multiple workspaces</li>
+    </ol>
+    
+    <div class="tip">
+      <strong>💡 Pro Tip:</strong> Use the "Load Start Page" option in the menu to create a pre-configured workspace with popular services!
+    </div>
+    
+    <h2><span class="emoji">📦</span>Creating Containers</h2>
+    <h3>What are Containers?</h3>
+    <p>Containers are customizable boxes that hold your bookmarks. Think of them as folders or categories for your links.</p>
+    
+    <h3>How to Create a Container:</h3>
+    <ol>
+      <li>Click the <code>+</code> button in the toolbar (requires PRO)</li>
+      <li>A new container appears on your workspace</li>
+      <li>Click the container name to rename it</li>
+      <li>Drag the edges to resize it</li>
+      <li>Drag the header to move it around</li>
+    </ol>
+    
+    <h3>Container Features:</h3>
+    <ul>
+      <li><strong>Rename:</strong> Click on the container title to edit its name</li>
+      <li><strong>Resize:</strong> Drag from the bottom-right corner</li>
+      <li><strong>Move:</strong> Drag the container header</li>
+      <li><strong>Copy:</strong> Click the copy icon (📋) on the container</li>
+      <li><strong>Delete:</strong> Click the trash icon (🗑️) on the container</li>
+      <li><strong>Change Color:</strong> Use the dropdown menu to select container background colors</li>
+    </ul>
+    
+    <h2><span class="emoji">🔗</span>Adding Links</h2>
+    <h3>Method 1: Drag and Drop</h3>
+    <ol>
+      <li>Copy a URL from your browser address bar or any webpage</li>
+      <li>Drag the link and drop it into a container</li>
+      <li>The favicon and name are automatically detected</li>
+    </ol>
+    
+    <h3>Method 2: Paste URL</h3>
+    <ol>
+      <li>Copy a URL to your clipboard</li>
+      <li>Click inside a container</li>
+      <li>The extension will detect the URL and create a link</li>
+    </ol>
+    
+    <h3>Method 3: Drag from Address Bar</h3>
+    <ol>
+      <li>Open the website you want to bookmark</li>
+      <li>Drag the favicon or URL from the address bar</li>
+      <li>Drop it into any container or the drop zone</li>
+    </ol>
+    
+    <div class="feature">
+      <strong>✨ Feature:</strong> Favicons are automatically fetched from websites. If an icon doesn't appear, try refreshing the page.
+    </div>
+    
+    <h2><span class="emoji">✏️</span>Editing & Managing Links</h2>
+    <h3>Edit a Link:</h3>
+    <ul>
+      <li><strong>Rename:</strong> Right-click on a link and select "Edit"</li>
+      <li><strong>Change URL:</strong> Edit the link properties</li>
+      <li><strong>Custom Icon:</strong> You can specify a custom icon URL</li>
+    </ul>
+    
+    <h3>Move Links:</h3>
+    <ul>
+      <li>Drag links between containers</li>
+      <li>Drag links to reorder them within a container</li>
+      <li>Drop links in the drop zone to create a new container</li>
+    </ul>
+    
+    <h3>Delete a Link:</h3>
+    <ul>
+      <li>Right-click on the link</li>
+      <li>Select "Delete" from the context menu</li>
+    </ul>
+    
+    <h2><span class="emoji">🎨</span>Themes & Customization</h2>
+    <h3>Container Backgrounds:</h3>
+    <p>Change container background colors from the hamburger menu:</p>
+    <ul>
+      <li>Black (default)</li>
+      <li>Dark gray</li>
+      <li>Dark blue</li>
+      <li>Dark red</li>
+    </ul>
+    
+    <h3>Page Backgrounds:</h3>
+    <p>Customize the main page background with the same color options.</p>
+    
+    <h2><span class="emoji">💾</span>Backup & Restore</h2>
+    <h3>Export Your Data:</h3>
+    <ol>
+      <li>Open the hamburger menu (☰)</li>
+      <li>Click "Export data"</li>
+      <li>Save the JSON file to your computer</li>
+      <li>This backup includes all tabs, containers, and links</li>
+    </ol>
+    
+    <h3>Import Data:</h3>
+    <ol>
+      <li>Open the hamburger menu (☰)</li>
+      <li>Click "Import data"</li>
+      <li>Select your backup JSON file</li>
+      <li>Your workspace will be restored</li>
+    </ol>
+    
+    <h3>Load Start Page:</h3>
+    <p>Want to start with a pre-configured workspace? Use the "Load Start Page" option to create a new tab with example containers and popular service links organized by category (AI, Tools, Communication, etc.).</p>
+    
+    <div class="warning">
+      <strong>⚠️ Important:</strong> Always backup your data before making major changes. The backup file contains everything you need to restore your workspace.
+    </div>
+    
+    <h2><span class="emoji">⭐</span>License & Trial</h2>
+    <h3>Trial Period:</h3>
+    <p>Link & Co offers a <strong>6-month trial</strong> period. During this time, you can access all PRO features:</p>
+    <ul>
+      <li>Unlimited containers</li>
+      <li>Unlimited links</li>
+      <li>Multiple tabs</li>
+      <li>All customization options</li>
+    </ul>
+    
+    <h3>Upgrade to PRO:</h3>
+    <p>After the trial period, upgrade to continue using PRO features:</p>
+    <ol>
+      <li>Click the "Upgrade" button in the top bar</li>
+      <li>Complete the purchase through ExtensionPay</li>
+      <li>Your license is automatically activated</li>
+    </ol>
+    
+    <h3>Enter License Key:</h3>
+    <p>If you already have a license key:</p>
+    <ol>
+      <li>Click "Enter License Key" button</li>
+      <li>Paste your license key</li>
+      <li>Click "Activate"</li>
+    </ol>
+    
+    <h2><span class="emoji">💡</span>Tips & Best Practices</h2>
+    <div class="tip">
+      <h3>Organize by Category:</h3>
+      <p>Create containers for different types of websites:</p>
+      <ul>
+        <li>Work Tools (GitHub, AWS, Slack)</li>
+        <li>Social Media (Twitter, LinkedIn, Reddit)</li>
+        <li>News & Resources</li>
+        <li>Shopping & Finance</li>
+        <li>Entertainment</li>
+      </ul>
+    </div>
+    
+    <div class="tip">
+      <h3>Use Multiple Tabs:</h3>
+      <p>Create separate tabs for different contexts:</p>
+      <ul>
+        <li>Personal Tab</li>
+        <li>Work Tab</li>
+        <li>Projects Tab</li>
+        <li>Research Tab</li>
+      </ul>
+    </div>
+    
+    <div class="tip">
+      <h3>Color Coding:</h3>
+      <p>Use different container colors to visually distinguish categories at a glance.</p>
+    </div>
+    
+    <div class="tip">
+      <h3>Regular Backups:</h3>
+      <p>Export your data regularly, especially before making major changes or updates.</p>
+    </div>
+    
+    <h2><span class="emoji">🔧</span>Troubleshooting</h2>
+    <h3>Links Not Saving?</h3>
+    <ul>
+      <li>Make sure you're dropping links inside containers, not on the background</li>
+      <li>Check that you have a valid URL in your clipboard</li>
+      <li>Try refreshing the extension</li>
+    </ul>
+    
+    <h3>Favicons Not Loading?</h3>
+    <ul>
+      <li>Some websites block favicon requests</li>
+      <li>Try refreshing the page</li>
+      <li>You can manually set a custom icon URL</li>
+    </ul>
+    
+    <h3>Lost Your Data?</h3>
+    <ul>
+      <li>Check if you have a recent backup file</li>
+      <li>Use "Import data" to restore from backup</li>
+      <li>Contact support if you need assistance</li>
+    </ul>
+    
+    <h3>Trial Period Issues?</h3>
+    <ul>
+      <li>Click "Refresh status" to update your license state</li>
+      <li>Make sure your system clock is correct</li>
+      <li>Contact support if problems persist</li>
+    </ul>
+    
+    <h2><span class="emoji">📧</span>Support & Contact</h2>
+    <p>Need help? Have feedback? We'd love to hear from you!</p>
+    <ul>
+      <li><strong>Email:</strong> info@engincore.it</li>
+      <li><strong>Privacy Policy:</strong> Available in the extension menu</li>
+      <li><strong>Terms of Service:</strong> Available in the extension menu</li>
+    </ul>
+    
+    <div class="feature">
+      <strong>🌟 Thank you for using Link & Co!</strong><br>
+      We're constantly improving the extension. Your feedback helps us make it better for everyone.
+    </div>
+    
+    <p style="text-align: center; margin-top: 40px; color: #888; font-size: 0.9em;">
+      Link & Co — Visual Bookmarks v1.0.1<br>
+      © 2025 EngInCore Studio. All rights reserved.
+    </p>
+  </div>
+</body>
+</html>

@@ -132,8 +132,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     
     // Help & Legal menu links
+    const menuHelp = document.getElementById('menuHelp');
     const menuPrivacy = document.getElementById('menuPrivacy');
     const menuTerms = document.getElementById('menuTerms');
+    if (menuHelp) {
+      menuHelp.addEventListener('click', (e) => {
+        e.preventDefault();
+        chrome.tabs.create({ url: chrome.runtime.getURL('help.html') });
+      });
+    }
     if (menuPrivacy) {
       menuPrivacy.addEventListener('click', (e) => {
         e.preventDefault();

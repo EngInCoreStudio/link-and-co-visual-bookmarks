@@ -1,9 +1,11 @@
 // advancedBackup.js
+import { STARTER_DATA } from './src/starterData.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const exportFileBtn = document.getElementById('export-file-btn');
   const importFileInput = document.getElementById('import-file-input');
   const importBtn = document.getElementById('import-btn');
+  const loadStarterBtn = document.getElementById('load-starter-btn');
 
   async function exportData() {
     const stored = await chrome.storage.local.get(null); // all keys
@@ -66,5 +68,66 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e) {
       alert("Error during import: " + e);
     }
+  }
+
+  // Load Start Page handler
+  if (loadStarterBtn) {
+    loadStarterBtn.addEventListener('click', async () => {
+      const confirmed = confirm(
+        "Create a new 'Start' tab with pre-configured containers and popular links?\n\n" +
+        "This will create a new tab with example containers (AI, Tools, Communication, etc.).\n\n" +
+        "Click OK to continue."
+      );
+      if (!confirmed) return;
+
+      try {
+        await loadStarterData();
+        alert("Start tab created successfully! Reloading...");
+        setTimeout(() => window.location.reload(), 50);
+      } catch (e) {
+        alert("Error creating Start tab: " + e);
+        console.error('[STARTER] Load failed', e);
+      }
+    });
+  }
+
+  async function loadStarterData() {
+    const lsPrefix = LSUtils.LS_PREFIX;
+    
+    // Create a new tab called "Start"
+    const startTabId = "start";
+    
+    // Get existing tabs
+    const stored = await chrome.storage.local.get(['myTabs']);
+    const tabs = stored.myTabs || [];
+    
+    // Check if "Start" tab already exists
+    const existingStartTab = tabs.find(t => t.id === startTabId);
+    if (existingStartTab) {
+      // Switch to existing Start tab
+      await chrome.storage.local.set({ currentTab: startTabId });
+      console.log('[STARTER] Start tab already exists, switching to it');
+      return;
+    }
+    
+    // Create new "Start" tab
+    tabs.push({ id: startTabId, name: "Start" });
+    await chrome.storage.local.set({ myTabs: tabs, currentTab: startTabId });
+    
+    const linksKey = lsPrefix + "_" + startTabId + "_myNestedLinks";
+    const containersKey = lsPrefix + "_" + startTabId + "_myNestedContainers";
+
+    // Use starter data exactly as defined (no transformation needed)
+    await chrome.storage.local.set({
+      [containersKey]: STARTER_DATA.containersData,
+      [linksKey]: STARTER_DATA.linksData
+    });
+
+    // Prime cache
+    if (window.LSUtils && window.LSUtils.prefetchTab) {
+      await window.LSUtils.prefetchTab(startTabId);
+    }
+
+    console.log('[STARTER] Created Start tab with', STARTER_DATA.containersData.length, 'containers and', STARTER_DATA.linksData.length, 'links');
   }
 });

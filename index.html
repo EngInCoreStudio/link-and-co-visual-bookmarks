@@ -29,6 +29,7 @@
         <a href="#" id="export-file-btn">Export data</a>
         <a href="#" id="import-btn">Import data</a>
         <input type="file" id="import-file-input" accept=".json" style="display:none;">
+        <a href="#" id="load-starter-btn">Load Start Page</a>
 
         <div class="dropdown-submenu">
           <span>Container background:</span>
@@ -53,6 +54,7 @@
         <a href="#" id="menuUpgrade">Upgrade</a>
         <hr style="border:none; border-top:1px solid #444; margin:8px 0;" />
         <div class="help-legal-menu">
+          <a href="#" id="menuHelp">How to Use</a>
           <a href="#" id="menuPrivacy" target="_blank" rel="noopener">Privacy Policy</a>
           <a href="#" id="menuTerms" target="_blank" rel="noopener">Terms of Service</a>
           <a href="mailto:info@engincore.it" id="menuSupport">Contact Support</a>
@@ -90,7 +92,7 @@
   <script src="localStorageUtils.js"></script>
   <script src="containers.js"></script>
   <script src="icons.js"></script>
-  <script src="advancedBackup.js"></script>
+  <script type="module" src="advancedBackup.js"></script>
   <!-- ExtPay global (non-ESM) -->
   <script defer src="src/extpay.js"></script>
   <script defer src="src/app_config.js"></script>
