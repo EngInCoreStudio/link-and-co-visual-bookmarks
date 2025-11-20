@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (menuHelp) {
       menuHelp.addEventListener('click', (e) => {
         e.preventDefault();
-        chrome.tabs.create({ url: chrome.runtime.getURL('help.html') });
+        chrome.tabs.create({ url: chrome.runtime.getURL('help.html#quick-start') });
       });
     }
     if (menuPrivacy) {

@@ -8,7 +8,7 @@
     linksContainer = containerElement;
   }
 
-  function addLink(url, x, y, save = true, containerId = null) {
+  function addLink(url, x, y, save = true, containerId = null, skipValidation = false) {
     const parentEl = containerId 
       ? document.querySelector(`[data-container-id="${containerId}"]`)
       : linksContainer;
@@ -65,7 +65,13 @@
     let circleDiv = document.createElement('div');
     circleDiv.className = 'icon-circle';
     let img = document.createElement('img');
-    img.src = 'https://www.google.com/s2/favicons?domain=' + extractDomain(url);
+    // Use Google's Favicon V2 API for better quality and reliability
+    img.src = 'https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=' + encodeURIComponent(url) + '&size=64';
+    // Fallback to standard Google favicon service if V2 fails
+    img.onerror = function() {
+      this.onerror = null; // Prevent infinite loop
+      this.src = 'https://www.google.com/s2/favicons?sz=64&domain=' + extractDomain(url);
+    };
     img.alt = url;
     circleDiv.appendChild(img);
     a.appendChild(circleDiv);
@@ -76,15 +82,17 @@
     label.textContent = cleanedName;
     label.contentEditable = true;
     
-    // Validate the cleaned name against readability rules
-    const validation = validateNameRules(cleanedName);
-    if (!validation.isValid) {
-      setTimeout(() => {
-        showNameEditor(cleanedName, (newName) => {
-          label.textContent = newName;
-          updateLinkName(url, newName, containerId);
-        }, validation);
-      }, 100);
+    // Validate the cleaned name against readability rules (only for new icons, not loaded from storage)
+    if (!skipValidation) {
+      const validation = validateNameRules(cleanedName);
+      if (!validation.isValid) {
+        setTimeout(() => {
+          showNameEditor(cleanedName, (newName) => {
+            label.textContent = newName;
+            updateLinkName(url, newName, containerId);
+          }, validation);
+        }, 100);
+      }
     }
     
     label.addEventListener('blur', () => {
@@ -115,6 +123,10 @@
     const iconTop  = rect.top + window.scrollY;
     this.dragOffsetX = e.pageX - iconLeft;
     this.dragOffsetY = e.pageY - iconTop;
+    
+    // Store the original containerId before drag
+    const parentContainer = this.parentNode.closest('.resizable-container');
+    this.originalContainerId = parentContainer ? parentContainer.dataset.containerId : null;
   }
 
   function handleIconDragEnd(e) {
@@ -178,17 +190,45 @@
       this.style.top  = y + 'px';
     }
     let currentUrl = this.querySelector('a').href;
-    updateLinkData(currentUrl, parseInt(this.style.left), parseInt(this.style.top), newContainerId);
+    let oldContainerId = this.originalContainerId;
+    console.log('[ICON] Drag ended:', { url: currentUrl, oldContainerId, newContainerId, x: parseInt(this.style.left), y: parseInt(this.style.top) });
+    updateLinkData(currentUrl, parseInt(this.style.left), parseInt(this.style.top), newContainerId, oldContainerId);
   }
 
-  function updateLinkData(url, x, y, containerId) {
+  function updateLinkData(url, x, y, newContainerId, oldContainerId) {
     let arr = getSavedLinks();
-    let idx = arr.findIndex(item => item.url === url);
+    
+    // Normalize URLs for comparison (remove trailing slashes)
+    const normalizeUrl = (u) => u ? u.replace(/\/$/, '') : u;
+    const normalizedUrl = normalizeUrl(url);
+    
+    // First attempt: Find by exact URL and containerId match
+    let idx = arr.findIndex(item => {
+      const itemContainerId = item.containerId || null;
+      const searchContainerId = oldContainerId || null;
+      const itemUrl = normalizeUrl(item.url);
+      return itemUrl === normalizedUrl && itemContainerId === searchContainerId;
+    });
+    
+    // Fallback: If not found, try to find by URL only (for legacy data or edge cases)
+    if (idx === -1) {
+      console.warn('[ICON] Exact match not found, trying URL-only match');
+      idx = arr.findIndex(item => normalizeUrl(item.url) === normalizedUrl);
+    }
+    
     if (idx !== -1) {
       arr[idx].x = x;
       arr[idx].y = y;
-      arr[idx].containerId = containerId;
+      arr[idx].containerId = newContainerId;
       setSavedLinks(arr);
+      console.log('[ICON] Position saved:', { url, x, y, oldContainerId, newContainerId, index: idx });
+    } else {
+      console.error('[ICON] Failed to find link to update:', { 
+        url, 
+        normalizedUrl,
+        oldContainerId, 
+        existingLinks: arr.map(i => ({ url: i.url, normalizedUrl: normalizeUrl(i.url), containerId: i.containerId })) 
+      });
     }
   }
 
@@ -217,7 +257,8 @@
   }
 
   function addLinkFromStorage(item) {
-    addLink(item.url, item.x, item.y, false, item.containerId);
+    // Pass skipValidation = true to prevent popup for already-saved icons
+    addLink(item.url, item.x, item.y, false, item.containerId, true);
     let parentEl = (item.containerId)
       ? document.querySelector(`[data-container-id="${item.containerId}"]`)
       : linksContainer;

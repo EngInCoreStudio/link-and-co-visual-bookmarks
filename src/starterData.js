@@ -5,9 +5,9 @@ export const STARTER_DATA = {
   containersData: [
     {
       containerId: "c_bnse9xrwe",
-      height: 228,
+      height: 225,
       name: "AI ",
-      width: 350,
+      width: 376,
       x: 143,
       y: 11,
       backgroundColor: "#3b82f6"
@@ -26,8 +26,8 @@ export const STARTER_DATA = {
       height: 132,
       name: "Bank ",
       width: 375,
-      x: 1170,
-      y: 33,
+      x: 1100,
+      y: 15,
       backgroundColor: "#10b981"
     },
     {
@@ -35,17 +35,17 @@ export const STARTER_DATA = {
       height: 152,
       name: "Communication Apps",
       width: 380,
-      x: 144,
-      y: 260,
+      x: 140,
+      y: 254,
       backgroundColor: "#ec4899"
     },
     {
       containerId: "c_mo3a59jaf",
-      height: 228,
+      height: 206,
       name: "News",
-      width: 426,
-      x: 594,
-      y: 436,
+      width: 432,
+      x: 580,
+      y: 437,
       backgroundColor: "#ef4444"
     },
     {
@@ -53,8 +53,8 @@ export const STARTER_DATA = {
       height: 170,
       name: "Translator",
       width: 401,
-      x: 591,
-      y: 250,
+      x: 582,
+      y: 249,
       backgroundColor: "#06b6d4"
     },
     {
@@ -62,17 +62,17 @@ export const STARTER_DATA = {
       height: 234,
       name: "Web Tools",
       width: 422,
-      x: 1114,
-      y: 213,
+      x: 1091,
+      y: 253,
       backgroundColor: "#f59e0b"
     },
     {
       containerId: "c_yxpskc0tg",
-      height: 137,
+      height: 131,
       name: "Text To Speech",
-      width: 277,
-      x: 170,
-      y: 449,
+      width: 381,
+      x: 142,
+      y: 434,
       backgroundColor: "#6366f1"
     }
   ],
@@ -154,8 +154,8 @@ export const STARTER_DATA = {
       icon: "https://www.google.com/s2/favicons?domain=web.telegram.org",
       name: "Telegram",
       url: "https://web.telegram.org/k/",
-      x: 80,
-      y: 80
+      x: 50,
+      y: 60
     },
     {
       containerId: "c_knbfnw6fp",
@@ -316,6 +316,54 @@ export const STARTER_DATA = {
       url: "https://chrome.google.com/webstore",
       x: 290,
       y: 140
+    },
+    {
+      containerId: "c_88yvmod3g",
+      icon: "https://www.google.com/s2/favicons?domain=chrome.google.com",
+      name: "developer console",
+      url: "https://chrome.google.com/webstore/devconsole/4422c2e8-cc19-4c50-a408-d5a70b400d65?hl=it",
+      x: 210,
+      y: 140
+    },
+    {
+      containerId: "c_knbfnw6fp",
+      icon: "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fsignal.org%2F&size=64",
+      name: "Signal",
+      url: "https://signal.org/",
+      x: 210,
+      y: 60
+    },
+    {
+      containerId: "c_knbfnw6fp",
+      icon: "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fdiscord.com%2Fapp&size=64",
+      name: "Discord",
+      url: "https://discord.com/app",
+      x: 290,
+      y: 60
+    },
+    {
+      containerId: "c_mo3a59jaf",
+      icon: "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fwww.bbc.com%2Fnews&size=64",
+      name: "Bbc",
+      url: "https://www.bbc.com/news",
+      x: 210,
+      y: 60
+    },
+    {
+      containerId: "c_mo3a59jaf",
+      icon: "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fwww.reuters.com%2F&size=64",
+      name: "Reuters",
+      url: "https://www.reuters.com/",
+      x: 210,
+      y: 140
+    },
+    {
+      containerId: "c_mo3a59jaf",
+      icon: "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https%3A%2F%2Fwww.nytimes.com%2F&size=64",
+      name: "Nytimes",
+      url: "https://www.nytimes.com/",
+      x: 290,
+      y: 60
     }
   ]
 };

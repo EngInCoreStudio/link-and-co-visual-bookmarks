@@ -22,15 +22,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   exportFileBtn.addEventListener('click', async () => {
     const exportedData = await exportData();
-    // Ask the user for the filename
-    const filename = prompt("Enter the backup filename:", "backup.json") || "backup.json";
+    
+    // Generate automatic filename with date: LinkCo_YYYYMMDD.json
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const defaultFilename = `LinkCo_${year}${month}${day}.json`;
+    
+    // Create blob and download using standard method
     const blob = new Blob([exportedData], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = filename;
+    a.download = defaultFilename;
     a.click();
-    URL.revokeObjectURL(url);
+    
+    // Clean up the blob URL after a short delay
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
   });
 
   importBtn.addEventListener('click', () => {
